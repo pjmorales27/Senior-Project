@@ -98,9 +98,9 @@
 
 <?PHP
 
-    $dbservername = "localhost";
-    $dbusername = "root";
-    $dbpassword = "";
+    $dbservername = "127.0.0.1";
+    $dbusername = "mario";
+    $dbpassword = "DailyUpdate";
     $dbname = "Rundown";
 
     $conn = mysqli_connect($dbservername, $dbusername, $dbpassword, $dbname);
