@@ -91,10 +91,19 @@
 //?>
 
 <h1> How to use an image as a link in HTML </h1>
-
-    <a href = "" target= " blank">
-        <img src="image/FanucchiMap.png" width = "80%">
-    </a>
+//load image and map begin map image polygons
+    <!a href = "" target= " blank">
+        <img src="image/FanucchiMap.png" usemap= "#mymap" >
+        <map name= "mymap">
+            <area
+                target="_blank"
+                alt="Field#"
+                title="Field#"
+                href="https://www.mlb.com"
+                coords="472,641, 559,641, 603,764, 472,764"
+                shape="poly">
+        </map>
+    <!/a>
 
 <?PHP
 
@@ -124,4 +133,7 @@
 
 </body>
 </html>
+
+\
+
 
