@@ -23,6 +23,11 @@ from  Tractor_Drivers
 left join Tractors on 
 Tractor_Drivers.Tractor_num = Tractors.Tractor_num;
 
+call Get_Irrigator(1);
+call Get_Linemen(1);
+call Get_TractorDriver(2);
 
+call Get_fieldWorkers(1);
+call Get_CropFields(3);
 
 
