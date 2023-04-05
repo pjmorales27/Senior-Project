@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="design.css">
         <script src="myjava.js"></script>
         <?php include 'calls.php'; ?>
-
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -60,37 +59,43 @@
                         <table class = "table">
                             <thead>
                                 <tr>
-                                    <th scope="col"> ID </th>
+                                <th scope="col"> Field ID </th>
+                                    <th scope="col"> Acres </th>               
                                     <th scope="col"> Driver Name </th>
-                                    <th scope="col"> Task ID </th>
+                                    <th scope="col"> Task </th>
                                     <th scope="col"> Tractor </th>
                                     <th scope="col"> Equipment </th>
-                                    <th scope="col"> Field ID </th>
+                                    <th scope="col"> Crop </th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
 
-                                    $sql = "select * from Tractor_Drivers;";
+                                    $sql = "call Daily_Drivers;";
                                     $result = mysqli_query($conn, $sql);
                                     if($result){
                                         while ($row = mysqli_fetch_assoc($result)){
-                                            $id = $row['Driver_ID'];
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];
                                             $name = $row['Worker_name'];
-                                            $task = $row['Task_ID'];
-                                            $tractor = $row['Tractor_num'];
-                                            $equipment = $row['Equipment_num'];
-                                            $fieldid = $row['Field_ID'];
+                                            $task = $row['Task_des'];
+                                            $tractor = $row['Tractor_des'];
+                                            $equipment = $row['Equipment_des'];
+                                            $crop = $row['Crop_name'];
 
                                             echo '<tr>
                                             <th scope= "row">'.$id.'</th>
+                                            <td>'.$acres.'</td>
                                             <td>'.$name.'</td>
                                             <td>'.$task.'</td>
                                             <td>'.$tractor.'</td>
                                             <td>'.$equipment.'</td>
-                                            <td>'.$fieldid.'</td>
+                                            <td>'.$crop.'</td>
                                             </tr>';
                                         }
+                                        $result->close();
+                                        $conn->next_result();
                                     }
                                 ?>
                             </tbody>
@@ -101,31 +106,37 @@
                         <table class = "table">
                             <thead>
                                 <tr>
-                                    <th scope="col"> ID </th>
-                                    <th scope="col"> Linemen Name </th>
-                                    <th scope="col"> Task ID </th>
                                     <th scope="col"> Field ID </th>
+                                    <th scope="col"> Acres </th>               
+                                    <th scope="col"> Linemen Name </th>
+                                    <th scope="col"> Task </th>
+                                    <th scope="col"> Crop </th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
 
-                                    $sql = "select * from Linemen;";
+                                    $sql = "call Daily_Linemen;";
                                     $result = mysqli_query($conn, $sql);
                                     if($result){
                                         while ($row = mysqli_fetch_assoc($result)){
-                                            $id = $row['Linemen_ID'];
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];
                                             $name = $row['Worker_name'];
-                                            $task = $row['Task_ID'];
-                                            $fieldid = $row['Field_ID'];
+                                            $task = $row['Task_des'];
+                                            $crop = $row['Crop_name'];
 
                                             echo '<tr>
                                             <th scope= "row">'.$id.'</th>
+                                            <td>'.$acres.'</td>
                                             <td>'.$name.'</td>
                                             <td>'.$task.'</td>
-                                            <td>'.$fieldid.'</td>
+                                            <td>'.$crop.'</td>
                                             </tr>';
                                         }
+                                        $result->close();
+                                        $conn->next_result();
                                     }
                                 ?>
                             </tbody>
@@ -136,29 +147,33 @@
                         <table class = "table">
                             <thead>
                                 <tr>
-                                    <th scope="col"> ID </th>
+                                <th scope="col"> Field ID </th>
+                                    <th scope="col"> Acres </th>               
                                     <th scope="col"> Irrigator Name </th>
-                                    <th scope="col"> Task ID </th>
-                                    <th scope="col"> Field ID </th>
+                                    <th scope="col"> Task </th>
+                                    <th scope="col"> Crop </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
 
-                                    $sql = "select * from Irrigator;";
+                                    $sql = "call Daily_Irrigator;";
                                     $result = mysqli_query($conn, $sql);
                                     if($result){
                                         while ($row = mysqli_fetch_assoc($result)){
-                                            $id = $row['Irrigator_ID'];
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];
                                             $name = $row['Worker_name'];
-                                            $task = $row['Task_ID'];
-                                            $fieldid = $row['Field_ID'];
+                                            $task = $row['Task_des'];
+                                            $crop = $row['Crop_name'];
+
 
                                             echo '<tr>
                                             <th scope= "row">'.$id.'</th>
+                                            <td>'.$acres.'</td>
                                             <td>'.$name.'</td>
                                             <td>'.$task.'</td>
-                                            <td>'.$fieldid.'</td>
+                                            <td>'.$crop.'</td>
                                             </tr>';
                                         }
                                     }
