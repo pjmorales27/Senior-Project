@@ -1,35 +1,49 @@
-function createTable() {
-  // create table element
-  var table = document.createElement('table');
-  
-  // create table header row element
-  var headerRow = document.createElement('tr');
-  
-  // create table header cells and add them to header row
-  var headerCell1 = document.createElement('th');
-  var headerCell2 = document.createElement('th');
-  headerCell1.innerHTML = 'Column 1';
-  headerCell2.innerHTML = 'Column 2';
-  headerRow.appendChild(headerCell1);
-  headerRow.appendChild(headerCell2);
-  
-  // add header row to table
-  table.appendChild(headerRow);
-  
-  // create table data rows and cells and add them to table
-  for (var i = 1; i <= 3; i++) {
-    var row = document.createElement('tr');
-    var cell1 = document.createElement('td');
-    var cell2 = document.createElement('td');
-    cell1.innerHTML = 'Row ' + i + ', Column 1';
-    cell2.innerHTML = 'Row ' + i + ', Column 2';
-    row.appendChild(cell1);
-    row.appendChild(cell2);
-    table.appendChild(row);
-  }
-  
-  // add table to div
-  var div = document.getElementById('myTable');
-  div.appendChild(table);
-}
+const dropdowns = document.querySelectorAll('dropdown');
+//loop through all dopdown elements
+dropdowns.forEach(dropdown => {
+  //get inner elements from each dropdown
+  const select = dropdown.querySelector('.select');
+  const caret = dropdown.querySelector('.caret');
+  const menu = dropdown.querySelector('.menu');
+  const options = dropdown.querySelector('.menu li');
+  const selected = dropdown.querySelector('.selected');
+  /*
+    we are using this method in order to have 
+    multiple dropdown menus on the page work
+  */
 
+  //add click event to select element
+  select.addEventListener('click', () => {
+    //add the click select style to the select element
+    select.classList.toggle('select-clicked');
+    //add the rotate style to the caret element
+    caret.classList.toggle('caret-rotate');
+    //add the open styles to the menu element
+    menu.classList.toggle('menu-open');
+  });
+
+  //loop through all option elements
+  options.forEach(option => {
+    //all a click event to the option element
+    option.addEventListener('click', () => {
+      //change selected inner text to the clicked option inner text 
+      selected.innerText = option.innerText;
+
+      //add the click style to the select element
+      selected.classList.remove('select-clicked');
+
+      //add the rotate style to the caret element
+      caret.classList.remove('caret-rotate');
+
+      //add open style to the menu element
+      menu.classList.remove('menu-option');
+
+      //remove active class from all option elements
+      options.forEach(option => {
+        option.classList.remove('active');
+      });
+      //add active class to clicked option element
+      option.classList.add('active');
+    });
+  });
+});
