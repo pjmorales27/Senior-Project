@@ -51,10 +51,10 @@
                 </script>
 
 
-                <div id="info" class="col-sm-6">Tri-Fanucchi Farms
+                <div id="info" class="col-sm-6"> <h1>Tri-Fanucchi Farms</h1>
 
                 </div>
-                <div id="info1" class="col-sm-6"> The Rundown
+                <div id="info1" class="col-sm-6"> <h2> Rundown</h2>
                     <section class="tractor-table">
                         <table class = "table">
                             <thead>
