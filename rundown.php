@@ -37,9 +37,7 @@
                             <th scope="col"> ID </th>
                             <th scope="col"> Driver Name </th>
                             <th scope="col"> Task ID </th>
-                            <th scope="col"> Tractor </th>
-                            <th scope="col"> Equipment </th>
-                            <th scope="col"> Field ID </th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -52,19 +50,15 @@
                                     $id = $row['Driver_ID'];
                                     $name = $row['Driver_Name'];
                                     $task = $row['Task_ID'];
-                                    $tractor = $row['Tractor_num'];
-                                    $equipment = $row['Equipment_num'];
-                                    $fieldid = $row['Field_ID'];
+                                    
 
                                     echo '<tr>
                                     <th scope= "row">'.$id.'</th>
                                     <td>'.$name.'</td>
                                     <td>'.$task.'</td>
-                                    <td>'.$tractor.'</td>
-                                    <td>'.$equipment.'</td>
-                                    <td>'.$fieldid.'</td>
+                                    
                                     <td>
-                                        <button class="btn btn-primary"> <a href="update.php? updateid='.$name.'" class="text-light">Update</a> </button>
+                                        <button class="btn btn-primary"> <a href="update.php?updateid='.$name.'"class="text-light">Update</a> </button>
                                     </td>
                                     <td>
                                         <button class="btn btn-danger"> <a href="delete.php" class="text-light">Delete</a> </button>
