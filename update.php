@@ -24,8 +24,7 @@
             echo $name;
         }
         else die();
-        setcookie('word', $name, time()+3600, '/');
-        $Sname= $_COOKIE['word'];
+        
     ?>
     </head>
 
@@ -43,7 +42,7 @@
                     <tbody>
                         
                         <?php
-                        function tableinfo($name, $conn){
+                    
                             $sql="select * from drivers where Driver_Name = '$name';";
                             $result= mysqli_query($conn,$sql);  
                             if($result){
@@ -62,21 +61,15 @@
                             }
                             $result->close();
                             $conn->next_result();
-                        }
-                        tableinfo($name, $conn);
+                        
+                        
                         ?>
                     </tbody>
                 </table>
-            
-
                 
 
             <form>
-                <select class='updateid' > 
-                    <?php
-                        echo "<option selected> $name</option> \n "
-                    ?>
-                </select>
+                
                 <label>Task Options:</label>
                 <select class="taskoption" name= "thetask">
                     <option> none </option>
@@ -84,7 +77,7 @@
                     <option> disc </option>
                     <option> rip </option>
                 </select>
-                <?php echo "<button name='submit1' value='$Sname'> Submit  </button>";?>
+                <?php echo "<button name='submit1' value='$name'> Submit  </button>";?>
 
                 <label>Tractor Options:</label>
                 <select class="tractoroption" name= "thetractor">
@@ -99,9 +92,8 @@
             </form>
             
             
-            <?php $name=$_GET['submit1']; if($Sname==$name){
+            <?php if($name != null){
                 $newtask = $_GET['thetask'];
-                $Sname= $_COOKIE['word'];
                 echo $name;
                 switch ($newtask) {
                        
@@ -158,15 +150,13 @@
                 }
             ?>  
             
-            <?php $name=$_GET['submit2']; if(isset($Sname)){
+            <?php $name=$_GET['submit2']; if(isset($name)){
                 $newtractor = $_GET['thetractor'];
-                $name=$_GET['submit2'];
-                $Sname= $_COOKIE['word'];
+    
                 switch ($newtractor) {
                        
                     case "white":
-                        echo $name;
-                        echo $newtractor;
+                    
                         echo "sql update white right here";
                         echo '<table class = "table" >
                                     <thead>
@@ -177,7 +167,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>';
-                                        tableinfo($name, $conn);
+                                    
                                         $sql="select * from drivers where Driver_Name = '$name';";
                                         $result= mysqli_query($conn,$sql);  
                                         if($result){
