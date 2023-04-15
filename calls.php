@@ -14,11 +14,6 @@
     </head>
 
     <body>
-
-       
-
-
-
         <?php if(isset($_POST['id']) && $_POST['id'] === 'field200') { ?>
             
             <section class="tractor-table">

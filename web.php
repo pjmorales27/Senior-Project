@@ -59,39 +59,41 @@
                         <table class = "table">
                             <thead>
                                 <tr>
-                                <th scope="col"> Field ID </th>
-                                    <th scope="col"> Acres </th>               
-                                    <th scope="col"> Driver Name </th>
+                                <th scope="col"> Driver name </th>
+                                    <th scope="col"> Tractor </th>               
                                     <th scope="col"> Task </th>
-                                    <th scope="col"> Tractor </th>
                                     <th scope="col"> Equipment </th>
+                                    <th scope="col"> Field ID </th>
+                                    <th scope="col"> Acres </th>
                                     <th scope="col"> Crop </th>
 
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-
                                     $sql = "call Daily_Drivers;";
                                     $result = mysqli_query($conn, $sql);
                                     if($result){
                                         while ($row = mysqli_fetch_assoc($result)){
-                                            $id = $row['Field_ID'];
-                                            $acres = $row['acres'];
                                             $name = $row['Worker_name'];
-                                            $task = $row['Task_des'];
                                             $tractor = $row['Tractor_des'];
-                                            $equipment = $row['Equipment_des'];
+                                            $task = $row['Task_des'];
+                                            $equipment = $row['Equipment_des']; 
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];                                                                                      
                                             $crop = $row['Crop_name'];
 
                                             echo '<tr>
-                                            <th scope= "row">'.$id.'</th>
-                                            <td>'.$acres.'</td>
-                                            <td>'.$name.'</td>
-                                            <td>'.$task.'</td>
+                                            <th scope= "row">'.$name.'</th>
                                             <td>'.$tractor.'</td>
+                                            <td>'.$task.'</td>
                                             <td>'.$equipment.'</td>
+                                            <td>'.$id.'</td>
+                                            <td>'.$acres.'</td>
                                             <td>'.$crop.'</td>
+                                            <td>
+                                                <button class="btn btn-primary"> <a href="newupdate.php?updateDriver='.$name.'"class="text-light">Update</a> </button>
+                                            </td>
                                             </tr>';
                                         }
                                         $result->close();
@@ -133,6 +135,9 @@
                                             <td>'.$name.'</td>
                                             <td>'.$task.'</td>
                                             <td>'.$crop.'</td>
+                                            <td>
+                                                <button class="btn btn-primary"> <a href="newupdate.php?updateLinemen='.$name.'"class="text-light">Update</a> </button>
+                                            </td>
                                             </tr>';
                                         }
                                         $result->close();
@@ -174,6 +179,9 @@
                                             <td>'.$name.'</td>
                                             <td>'.$task.'</td>
                                             <td>'.$crop.'</td>
+                                            <td>
+                                                <button class="btn btn-primary"> <a href="newupdate.php?updateIrrigator='.$name.'"class="text-light">Update</a> </button>
+                                            </td>
                                             </tr>';
                                         }
                                     }
