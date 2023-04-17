@@ -153,9 +153,8 @@
                                 <tr>
                                     <th scope="col"> Irrigator Name </th>
                                     <th scope="col"> Task </th>               
-                                    <th scope="col"> Field ID </th>
-                                    <th scope="col"> Acres </th>
-                                    <th scope="col"> Crop </th>
+                                    <th scope="col"> Update </th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -167,17 +166,15 @@
                                         while ($row = mysqli_fetch_assoc($result)){
                                             $name = $row['Worker_name'];
                                             $task = $row['Task_des'];
-                                            $id = $row['Field_ID'];
-                                            $acres = $row['acres'];            
-                                            $crop = $row['Crop_name'];
+                                            //$id = $row['Field_ID'];
+                                            //$acres = $row['acres'];            
+                                            //$crop = $row['Crop_name'];
 
 
                                             echo '<tr>
                                             <th scope= "row">'.$name.'</th>
                                             <td>'.$task.'</td>
-                                            <td>'.$id.'</td>
-                                            <td>'.$acres.'</td>
-                                            <td>'.$crop.'</td>
+                                            
                                             <td>
                                                 <button class="btn btn-primary"> <a href="newupdate.php?updateIrrigator='.$name.'"class="text-light">Update</a> </button>
                                             </td>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <link rel="stylesheet" href="design.css">
         <?php
         $dbservername = "127.0.0.1";
@@ -9,6 +10,7 @@
         $dbname = "Rundown";
 
         $conn = mysqli_connect($dbservername, $dbusername, $dbpassword, $dbname);
+        
         ?>
 
     </head>
@@ -33,7 +35,7 @@
                             <tbody>
                                 <?php
 
-                                    $sql = "call Get_TractorDriver(1);";
+                                    $sql = "call Get_TractorDriver(200);";
                                     $result = mysqli_query($conn, $sql);
                                     if($result){
                                         while ($row = mysqli_fetch_assoc($result)){
@@ -53,6 +55,9 @@
                                             <td>'.$tractor.'</td>
                                             <td>'.$equipment.'</td>
                                             <td>'.$crop.'</td>
+                                            <td>
+                                                <button class="btn btn-primary"> <a href="newupdate.php?updateDriver='.$name.'"class="text-light">Update</a> </button>
+                                            </td>
                                             </tr>';
                                         }
                                         $result->close();
@@ -78,7 +83,7 @@
                             <tbody>
                                 <?php
 
-                                    $sql = "call Get_Linemen(1);";
+                                    $sql = "call Get_Linemen(200);";
                                     $result = mysqli_query($conn, $sql);
                                     if($result){
                                         while ($row = mysqli_fetch_assoc($result)){
@@ -94,6 +99,9 @@
                                             <td>'.$name.'</td>
                                             <td>'.$task.'</td>
                                             <td>'.$crop.'</td>
+                                            <td>
+                                                <button class="btn btn-primary"> <a href="newupdate.php?updateLinemen='.$name.'"class="text-light">Update</a> </button>
+                                            </td>
                                             </tr>';
                                         }
                                         $result->close();
@@ -118,7 +126,7 @@
                             <tbody>
                                 <?php
 
-                                    $sql = "call Get_Irrigator(1);";
+                                    $sql = "call Get_Irrigator(200);";
                                     $result = mysqli_query($conn, $sql);
                                     if($result){
                                         while ($row = mysqli_fetch_assoc($result)){
@@ -165,7 +173,7 @@
                             <tbody>
                                 <?php
 
-                                    $sql = "call Get_TractorDriver(2);";
+                                    $sql = "call Get_TractorDriver(201);";
                                     $result = mysqli_query($conn, $sql);
                                     if($result){
                                         while ($row = mysqli_fetch_assoc($result)){
@@ -185,6 +193,9 @@
                                             <td>'.$tractor.'</td>
                                             <td>'.$equipment.'</td>
                                             <td>'.$crop.'</td>
+                                            <td>
+                                                <button class="btn btn-primary"> <a href="newupdate.php?updateDriver='.$name.'"class="text-light">Update</a> </button>
+                                            </td>
                                             </tr>';
                                         }
                                         $result->close();
@@ -210,7 +221,7 @@
                             <tbody>
                                 <?php
 
-                                    $sql = "call Get_Linemen(2);";
+                                    $sql = "call Get_Linemen(201);";
                                     $result = mysqli_query($conn, $sql);
                                     if($result){
                                         while ($row = mysqli_fetch_assoc($result)){
@@ -226,6 +237,9 @@
                                             <td>'.$name.'</td>
                                             <td>'.$task.'</td>
                                             <td>'.$crop.'</td>
+                                            <td>
+                                                <button class="btn btn-primary"> <a href="newupdate.php?updateLinemen='.$name.'"class="text-light">Update</a> </button>
+                                            </td>
                                             </tr>';
                                         }
                                         $result->close();
@@ -250,7 +264,7 @@
                             <tbody>
                                 <?php
 
-                                    $sql = "call Get_Irrigator(2);";
+                                    $sql = "call Get_Irrigator(201);";
                                     $result = mysqli_query($conn, $sql);
                                     if($result){
                                         while ($row = mysqli_fetch_assoc($result)){
