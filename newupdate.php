@@ -1083,6 +1083,249 @@
 
         <?php if($Iname != null){?>
             <?php echo "irrigator selected" ?>
+            <section class="irrigator-table">
+                <table class = "table">
+                    <thead>
+                        <tr>
+                            <th scope="col"> Irrigator Name </th>
+                            <th scope="col"> Task </th>               
+                            <th scope="col"> Field ID </th>
+                            <th scope="col"> Acres </th>
+                             <th scope="col"> Crop </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $sql = "call One_Irrigator('$Iname');";
+                            $result = mysqli_query($conn, $sql);
+                            if($result){
+                                while ($row = mysqli_fetch_assoc($result)){
+                                    $name = $row['Worker_name'];
+                                    $task = $row['Task_des'];
+                                    $id = $row['Field_ID'];
+                                    $acres = $row['acres'];            
+                                    $crop = $row['Crop_name'];
+
+                                    echo '<tr>
+                                    <th scope= "row">'.$name.'</th>
+                                    <td>'.$task.'</td>
+                                    <td>'.$id.'</td>
+                                    <td>'.$acres.'</td>
+                                    <td>'.$crop.'</td>  
+                                    </tr>';
+                                }
+                                $result->close();
+                                $conn->next_result();
+                            }
+                        ?>
+                    </tbody>
+                </table>
+                <form>        
+                    <label>Task Options:</label>
+                    <select class="taskoption" name= "thetask">
+                        <option> none </option>
+                        <option> Mettler </option>
+                        <option> Mettler Almonds </option>
+                        <option>  Mettler Drip </option>
+                        <option>  Copus Adobe </option>
+                        <option>  David </option>
+                        <option> Off </option>
+                    </select>
+                    <?php echo "<button name='submitI1' value='$Iname'> Submit  </button>";?>
+                </form>
+            </section>
+            <?php 
+                if($Iname != null){
+                    $newtask = $_GET['thetask'];
+                    switch($newtask) {
+                        case "Mettler":
+                            echo'
+                            <table class = "table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Irrigator Name </th>
+                                        <th scope="col"> Task </th>               
+                                        <th scope="col"> Field ID </th>
+                                        <th scope="col"> Acres </th>
+                                        <th scope="col"> Crop </th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                                    $sql = "call ChangeI_to_Mettler('$Iname');";
+                                    $result = mysqli_query($conn, $sql);
+                                    if($result){
+                                        while ($row = mysqli_fetch_assoc($result)){
+                                            $name = $row['Worker_name'];
+                                            $task = $row['Task_des'];
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];            
+                                            $crop = $row['Crop_name'];
+
+                                            echo '<tr>
+                                            <th scope= "row">'.$name.'</th>
+                                            <td>'.$task.'</td>
+                                            <td>'.$id.'</td>
+                                            <td>'.$acres.'</td>
+                                            <td>'.$crop.'</td>  
+                                            </tr>';
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                    }
+                                '</tbody>
+                            </table>';
+                        break;
+                        case "Mettler Almonds":
+                            echo'
+                            <table class = "table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Irrigator Name </th>
+                                        <th scope="col"> Task </th>               
+                                        <th scope="col"> Field ID </th>
+                                        <th scope="col"> Acres </th>
+                                        <th scope="col"> Crop </th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                                    $sql = "call ChangeI_to_MettlerAlmonds('$Iname');";
+                                    $result = mysqli_query($conn, $sql);
+                                    if($result){
+                                        while ($row = mysqli_fetch_assoc($result)){
+                                            $name = $row['Worker_name'];
+                                            $task = $row['Task_des'];
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];            
+                                            $crop = $row['Crop_name'];
+
+                                            echo '<tr>
+                                            <th scope= "row">'.$name.'</th>
+                                            <td>'.$task.'</td>
+                                            <td>'.$id.'</td>
+                                            <td>'.$acres.'</td>
+                                            <td>'.$crop.'</td>  
+                                            </tr>';
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                    }
+                                '</tbody>
+                            </table>';
+                        break;
+                        case "Mettler Drip":
+                            echo'
+                            <table class = "table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Irrigator Name </th>
+                                        <th scope="col"> Task </th>               
+                                        <th scope="col"> Field ID </th>
+                                        <th scope="col"> Acres </th>
+                                        <th scope="col"> Crop </th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                                    $sql = "call ChangeI_to_MettlerDrip('$Iname');";
+                                    $result = mysqli_query($conn, $sql);
+                                    if($result){
+                                        while ($row = mysqli_fetch_assoc($result)){
+                                            $name = $row['Worker_name'];
+                                            $task = $row['Task_des'];
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];            
+                                            $crop = $row['Crop_name'];
+
+                                            echo '<tr>
+                                            <th scope= "row">'.$name.'</th>
+                                            <td>'.$task.'</td>
+                                            <td>'.$id.'</td>
+                                            <td>'.$acres.'</td>
+                                            <td>'.$crop.'</td>  
+                                            </tr>';
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                    }
+                                '</tbody>
+                            </table>';
+                        break;
+                        case "Copus Adobe":
+                            echo'
+                            <table class = "table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Irrigator Name </th>
+                                        <th scope="col"> Task </th>               
+                                        <th scope="col"> Field ID </th>
+                                        <th scope="col"> Acres </th>
+                                        <th scope="col"> Crop </th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                                    $sql = "call ChangeI_to_Copus/Adobe('$Iname');";
+                                    $result = mysqli_query($conn, $sql);
+                                    if($result){
+                                        while ($row = mysqli_fetch_assoc($result)){
+                                            $name = $row['Worker_name'];
+                                            $task = $row['Task_des'];
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];            
+                                            $crop = $row['Crop_name'];
+
+                                            echo '<tr>
+                                            <th scope= "row">'.$name.'</th>
+                                            <td>'.$task.'</td>
+                                            <td>'.$id.'</td>
+                                            <td>'.$acres.'</td>
+                                            <td>'.$crop.'</td>  
+                                            </tr>';
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                    }
+                                '</tbody>
+                            </table>';
+                        break;
+                        case "David":
+                            echo'
+                            <table class = "table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Irrigator Name </th>
+                                        <th scope="col"> Task </th>               
+                                        <th scope="col"> Field ID </th>
+                                        <th scope="col"> Acres </th>
+                                        <th scope="col"> Crop </th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                                    $sql = "call ChangeI_to_David('$Iname');";
+                                    $result = mysqli_query($conn, $sql);
+                                    if($result){
+                                        while ($row = mysqli_fetch_assoc($result)){
+                                            $name = $row['Worker_name'];
+                                            $task = $row['Task_des'];
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];            
+                                            $crop = $row['Crop_name'];
+
+                                            echo '<tr>
+                                            <th scope= "row">'.$name.'</th>
+                                            <td>'.$task.'</td>
+                                            <td>'.$id.'</td>
+                                            <td>'.$acres.'</td>
+                                            <td>'.$crop.'</td>  
+                                            </tr>';
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                    }
+                                '</tbody>
+                            </table>';
+                        break;
+                    }
+                }
+            ?>
         <?php }?>
     </body>
 </html>
