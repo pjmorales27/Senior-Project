@@ -15,10 +15,10 @@
 
     </head>
     <body>
-        
+        <button><a href="web.php?">Home</a></button>
         <div class="container">
             <div class="row">
-                <div id="mysvg" class="col-sm-6">where svg will go </div>
+                <div id="mysvg" class="col1">where svg will go </div>
                 <script>
                     $(document).ready(function(){
 
@@ -32,14 +32,14 @@
                                 console.log ("field200 Clicked");
                                 $.post("calls.php", { id: "field200" }, function(data) {
                                     $("#info").html("<h1> Field 200 Worker List </h1>");
-                                    $("#info1").html(data);
+                                    $("#info").html(data);
                                 });
                                 break;
                             case "field201":
                                 console.log ("field201 Clicked");
                                 $.post("calls.php", { id: "field201" }, function(data) {
                                     $("#info").html("<h1> Field 201 Worker List </h1>");
-                                    $("#info1").html(data);
+                                    $("#info").html(data);
                                 });
                                 break;
                             default:
@@ -50,16 +50,15 @@
                     })
                 </script>
 
-
-                <div id="info" class="col-sm-6"> <h1>Tri-Fanucchi Farms</h1>
-
-                </div>
-                <div id="info1" class="col-sm-6"> <h2> Rundown</h2>
+               
+                <div id="info" class="col2"> 
+                    <h1>Tri-Fanucchi Farms</h1>
+                    <h2> Rundown</h2>
                     <section class="tractor-table">
                         <table class = "table">
                             <thead>
                                 <tr>
-                                <th scope="col"> Driver name </th>
+                                    <th scope="col"> Driver name </th>
                                     <th scope="col"> Tractor </th>               
                                     <th scope="col"> Task </th>
                                     <th scope="col"> Equipment </th>
@@ -108,10 +107,10 @@
                         <table class = "table">
                             <thead>
                                 <tr>
-                                    <th scope="col"> Field ID </th>
-                                    <th scope="col"> Acres </th>               
                                     <th scope="col"> Linemen Name </th>
-                                    <th scope="col"> Task </th>
+                                    <th scope="col"> Task </th>               
+                                    <th scope="col"> Field ID </th>
+                                    <th scope="col"> Acres </th>
                                     <th scope="col"> Crop </th>
 
                                 </tr>
@@ -123,17 +122,17 @@
                                     $result = mysqli_query($conn, $sql);
                                     if($result){
                                         while ($row = mysqli_fetch_assoc($result)){
+                                            $name = $row['Worker_name'];
+                                            $task = $row['Task_des'];                                   
                                             $id = $row['Field_ID'];
                                             $acres = $row['acres'];
-                                            $name = $row['Worker_name'];
-                                            $task = $row['Task_des'];
                                             $crop = $row['Crop_name'];
 
                                             echo '<tr>
-                                            <th scope= "row">'.$id.'</th>
-                                            <td>'.$acres.'</td>
-                                            <td>'.$name.'</td>
+                                            <th scope= "row">'.$name.'</th>
                                             <td>'.$task.'</td>
+                                            <td>'.$id.'</td>
+                                            <td>'.$acres.'</td>
                                             <td>'.$crop.'</td>
                                             <td>
                                                 <button class="btn btn-primary"> <a href="newupdate.php?updateLinemen='.$name.'"class="text-light">Update</a> </button>
@@ -152,10 +151,10 @@
                         <table class = "table">
                             <thead>
                                 <tr>
-                                <th scope="col"> Field ID </th>
-                                    <th scope="col"> Acres </th>               
                                     <th scope="col"> Irrigator Name </th>
-                                    <th scope="col"> Task </th>
+                                    <th scope="col"> Task </th>               
+                                    <th scope="col"> Field ID </th>
+                                    <th scope="col"> Acres </th>
                                     <th scope="col"> Crop </th>
                                 </tr>
                             </thead>
@@ -166,18 +165,18 @@
                                     $result = mysqli_query($conn, $sql);
                                     if($result){
                                         while ($row = mysqli_fetch_assoc($result)){
-                                            $id = $row['Field_ID'];
-                                            $acres = $row['acres'];
                                             $name = $row['Worker_name'];
                                             $task = $row['Task_des'];
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];            
                                             $crop = $row['Crop_name'];
 
 
                                             echo '<tr>
-                                            <th scope= "row">'.$id.'</th>
-                                            <td>'.$acres.'</td>
-                                            <td>'.$name.'</td>
+                                            <th scope= "row">'.$name.'</th>
                                             <td>'.$task.'</td>
+                                            <td>'.$id.'</td>
+                                            <td>'.$acres.'</td>
                                             <td>'.$crop.'</td>
                                             <td>
                                                 <button class="btn btn-primary"> <a href="newupdate.php?updateIrrigator='.$name.'"class="text-light">Update</a> </button>
@@ -189,6 +188,7 @@
                             </tbody>
                         </table>
                     </section>
+                    </div>
                 </div>
             </div>
         </div>

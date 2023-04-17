@@ -23,28 +23,36 @@
             $Dname=$_GET['submit2'];
             echo $Dname;
         }
+        else if(isset($_GET['submit3'])){
+            $Dname=$_GET['submit3'];
+            echo $Dname;
+        }
+        else if(isset($_GET['submit4'])){
+            $Dname=$_GET['submit4'];
+            echo $Dname;
+        }
         else if(isset($_GET['updateLinemen'])){
             $Lname=$_GET['updateLinemen'];
             echo $name;
         }
-        else if(isset($_GET['submit1'])){
-            $Lname=$_GET['submit1'];
+        else if(isset($_GET['submitL1'])){
+            $Lname=$_GET['submitL1'];
             echo $Lname;
         }
-        else if(isset($_GET['submit2'])){
-            $Lname=$_GET['submit2'];
+        else if(isset($_GET['submitL2'])){
+            $Lname=$_GET['submitL2'];
             echo $Lname;
         }
         else if(isset($_GET['updateIrrigator'])){
             $Iname=$_GET['updateIrrigator'];
             echo $Iame;
         }
-        else if(isset($_GET['submit1'])){
-            $Iname=$_GET['submit1'];
+        else if(isset($_GET['submitI1'])){
+            $Iname=$_GET['submitI1'];
             echo $Iname;
         }
-        else if(isset($_GET['submit2'])){
-            $Iname=$_GET['submit2'];
+        else if(isset($_GET['submitI2'])){
+            $Iname=$_GET['submitI2'];
             echo $Iname;
         }
         else die();
@@ -53,7 +61,7 @@
     </head>
     
     <body>
-
+        <button><a href="web.php?">Home</a></button>
         <?php if($Dname != null){?>
             <?php echo "driver selected" ?>
             <section class="tractor-table">
@@ -98,6 +106,7 @@
                         $conn->next_result();
                     ?>
                 </tbody>
+            </table>
                 <form>        
                     <label>Tractor Options:</label>
                     <select class="tractoroption" name= "thetractor">
@@ -233,15 +242,843 @@
                                 </table>';
                             break;
                             case "A-4 4020 JD":
-
+                                echo 
+                                '<table class = "table" >
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"> Driver name </th>
+                                            <th scope="col"> Tractor </th>               
+                                            <th scope="col"> Task </th>
+                                            <th scope="col"> Equipment </th>
+                                            <th scope="col"> Field ID </th>
+                                            <th scope="col"> Acres </th>
+                                            <th scope="col"> Crop </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>'; 
+                                        $sql="call Change_to_tractor_A4('$Dname');";
+                                        $result= mysqli_query($conn,$sql);  
+                                        if($result){
+                                            while ($row = mysqli_fetch_assoc($result)){
+                                                $name = $row['Worker_name'];
+                                                $tractor = $row['Tractor_des'];
+                                                $task = $row['Task_des'];
+                                                $equipment = $row['Equipment_des']; 
+                                                $id = $row['Field_ID'];
+                                                $acres = $row['acres'];                                                                                      
+                                                $crop = $row['Crop_name'];
+                
+                                                echo '<tr>
+                                                <th scope= "row">'.$name.'</th>
+                                                <td>'.$tractor.'</td>
+                                                <td>'.$task.'</td>
+                                                <td>'.$equipment.'</td>
+                                                <td>'.$id.'</td>
+                                                <td>'.$acres.'</td>
+                                                <td>'.$crop.'</td>
+                                                </tr>';
+                                            }
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                
+                                    '</tbody>
+                                </table>';
+                            break;
+                            case "A-5 4020 JD":
+                                echo 
+                                '<table class = "table" >
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"> Driver name </th>
+                                            <th scope="col"> Tractor </th>               
+                                            <th scope="col"> Task </th>
+                                            <th scope="col"> Equipment </th>
+                                            <th scope="col"> Field ID </th>
+                                            <th scope="col"> Acres </th>
+                                            <th scope="col"> Crop </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>'; 
+                                        $sql="call Change_to_tractor_A5('$Dname');";
+                                        $result= mysqli_query($conn,$sql);  
+                                        if($result){
+                                            while ($row = mysqli_fetch_assoc($result)){
+                                                $name = $row['Worker_name'];
+                                                $tractor = $row['Tractor_des'];
+                                                $task = $row['Task_des'];
+                                                $equipment = $row['Equipment_des']; 
+                                                $id = $row['Field_ID'];
+                                                $acres = $row['acres'];                                                                                      
+                                                $crop = $row['Crop_name'];
+                
+                                                echo '<tr>
+                                                <th scope= "row">'.$name.'</th>
+                                                <td>'.$tractor.'</td>
+                                                <td>'.$task.'</td>
+                                                <td>'.$equipment.'</td>
+                                                <td>'.$id.'</td>
+                                                <td>'.$acres.'</td>
+                                                <td>'.$crop.'</td>
+                                                </tr>';
+                                            }
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                
+                                    '</tbody>
+                                </table>';
                             break;
                         }
                     }
                 ?>
+                <?php 
+                    if($Dname != null){
+                        $newtask = $_GET['thetask'];
+                        switch($newtask) {
+                            case ("Wilcox"):
+                                echo 
+                                '<table class = "table" >
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"> Driver name </th>
+                                            <th scope="col"> Tractor </th>               
+                                            <th scope="col"> Task </th>
+                                            <th scope="col"> Equipment </th>
+                                            <th scope="col"> Field ID </th>
+                                            <th scope="col"> Acres </th>
+                                            <th scope="col"> Crop </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>'; 
+                                        $sql="call Change_to_Wilcox('$Dname');";
+                                        $result= mysqli_query($conn,$sql);  
+                                        if($result){
+                                            while ($row = mysqli_fetch_assoc($result)){
+                                                $name = $row['Worker_name'];
+                                                $tractor = $row['Tractor_des'];
+                                                $task = $row['Task_des'];
+                                                $equipment = $row['Equipment_des']; 
+                                                $id = $row['Field_ID'];
+                                                $acres = $row['acres'];                                                                                      
+                                                $crop = $row['Crop_name'];
+                
+                                                echo '<tr>
+                                                <th scope= "row">'.$name.'</th>
+                                                <td>'.$tractor.'</td>
+                                                <td>'.$task.'</td>
+                                                <td>'.$equipment.'</td>
+                                                <td>'.$id.'</td>
+                                                <td>'.$acres.'</td>
+                                                <td>'.$crop.'</td>
+                                                </tr>';
+                                            }
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                
+                                    '</tbody>
+                                </table>';
+                            break;
+                            case ("Disc"):
+                                echo 
+                                '<table class = "table" >
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"> Driver name </th>
+                                            <th scope="col"> Tractor </th>               
+                                            <th scope="col"> Task </th>
+                                            <th scope="col"> Equipment </th>
+                                            <th scope="col"> Field ID </th>
+                                            <th scope="col"> Acres </th>
+                                            <th scope="col"> Crop </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>'; 
+                                        $sql="call Change_to_Disc('$Dname');";
+                                        $result= mysqli_query($conn,$sql);  
+                                        if($result){
+                                            while ($row = mysqli_fetch_assoc($result)){
+                                                $name = $row['Worker_name'];
+                                                $tractor = $row['Tractor_des'];
+                                                $task = $row['Task_des'];
+                                                $equipment = $row['Equipment_des']; 
+                                                $id = $row['Field_ID'];
+                                                $acres = $row['acres'];                                                                                      
+                                                $crop = $row['Crop_name'];
+                
+                                                echo '<tr>
+                                                <th scope= "row">'.$name.'</th>
+                                                <td>'.$tractor.'</td>
+                                                <td>'.$task.'</td>
+                                                <td>'.$equipment.'</td>
+                                                <td>'.$id.'</td>
+                                                <td>'.$acres.'</td>
+                                                <td>'.$crop.'</td>
+                                                </tr>';
+                                            }
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                
+                                    '</tbody>
+                                </table>';
+                            break;
+                            case ("Rip"):
+                                echo 
+                                '<table class = "table" >
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"> Driver name </th>
+                                            <th scope="col"> Tractor </th>               
+                                            <th scope="col"> Task </th>
+                                            <th scope="col"> Equipment </th>
+                                            <th scope="col"> Field ID </th>
+                                            <th scope="col"> Acres </th>
+                                            <th scope="col"> Crop </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>'; 
+                                        $sql="call Change_to_Rip('$Dname');";
+                                        $result= mysqli_query($conn,$sql);  
+                                        if($result){
+                                            while ($row = mysqli_fetch_assoc($result)){
+                                                $name = $row['Worker_name'];
+                                                $tractor = $row['Tractor_des'];
+                                                $task = $row['Task_des'];
+                                                $equipment = $row['Equipment_des']; 
+                                                $id = $row['Field_ID'];
+                                                $acres = $row['acres'];                                                                                      
+                                                $crop = $row['Crop_name'];
+                
+                                                echo '<tr>
+                                                <th scope= "row">'.$name.'</th>
+                                                <td>'.$tractor.'</td>
+                                                <td>'.$task.'</td>
+                                                <td>'.$equipment.'</td>
+                                                <td>'.$id.'</td>
+                                                <td>'.$acres.'</td>
+                                                <td>'.$crop.'</td>
+                                                </tr>';
+                                            }
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                
+                                    '</tbody>
+                                </table>';
+                            break;
+                            case ("Chisel"):
+                                echo 
+                                '<table class = "table" >
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"> Driver name </th>
+                                            <th scope="col"> Tractor </th>               
+                                            <th scope="col"> Task </th>
+                                            <th scope="col"> Equipment </th>
+                                            <th scope="col"> Field ID </th>
+                                            <th scope="col"> Acres </th>
+                                            <th scope="col"> Crop </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>'; 
+                                        $sql="call Change_to_Chisel('$Dname');";
+                                        $result= mysqli_query($conn,$sql);  
+                                        if($result){
+                                            while ($row = mysqli_fetch_assoc($result)){
+                                                $name = $row['Worker_name'];
+                                                $tractor = $row['Tractor_des'];
+                                                $task = $row['Task_des'];
+                                                $equipment = $row['Equipment_des']; 
+                                                $id = $row['Field_ID'];
+                                                $acres = $row['acres'];                                                                                      
+                                                $crop = $row['Crop_name'];
+                
+                                                echo '<tr>
+                                                <th scope= "row">'.$name.'</th>
+                                                <td>'.$tractor.'</td>
+                                                <td>'.$task.'</td>
+                                                <td>'.$equipment.'</td>
+                                                <td>'.$id.'</td>
+                                                <td>'.$acres.'</td>
+                                                <td>'.$crop.'</td>
+                                                </tr>';
+                                            }
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                
+                                    '</tbody>
+                                </table>';
+                            break;
+                            case ("Water Roads"):
+                                echo 
+                                '<table class = "table" >
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"> Driver name </th>
+                                            <th scope="col"> Tractor </th>               
+                                            <th scope="col"> Task </th>
+                                            <th scope="col"> Equipment </th>
+                                            <th scope="col"> Field ID </th>
+                                            <th scope="col"> Acres </th>
+                                            <th scope="col"> Crop </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>'; 
+                                        $sql="call Change_to_Water_Roads('$Dname');";
+                                        $result= mysqli_query($conn,$sql);  
+                                        if($result){
+                                            while ($row = mysqli_fetch_assoc($result)){
+                                                $name = $row['Worker_name'];
+                                                $tractor = $row['Tractor_des'];
+                                                $task = $row['Task_des'];
+                                                $equipment = $row['Equipment_des']; 
+                                                $id = $row['Field_ID'];
+                                                $acres = $row['acres'];                                                                                      
+                                                $crop = $row['Crop_name'];
+                
+                                                echo '<tr>
+                                                <th scope= "row">'.$name.'</th>
+                                                <td>'.$tractor.'</td>
+                                                <td>'.$task.'</td>
+                                                <td>'.$equipment.'</td>
+                                                <td>'.$id.'</td>
+                                                <td>'.$acres.'</td>
+                                                <td>'.$crop.'</td>
+                                                </tr>';
+                                            }
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                
+                                    '</tbody>
+                                </table>';
+                            break;
+                            case ("Off"):
+                                echo 
+                                '<table class = "table" >
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"> Driver name </th>
+                                            <th scope="col"> Tractor </th>               
+                                            <th scope="col"> Task </th>
+                                            <th scope="col"> Equipment </th>
+                                            <th scope="col"> Field ID </th>
+                                            <th scope="col"> Acres </th>
+                                            <th scope="col"> Crop </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>'; 
+                                        $sql="call Change_to_Off('$Dname');";
+                                        $result= mysqli_query($conn,$sql);  
+                                        if($result){
+                                            while ($row = mysqli_fetch_assoc($result)){
+                                                $name = $row['Worker_name'];
+                                                $tractor = $row['Tractor_des'];
+                                                $task = $row['Task_des'];
+                                                $equipment = $row['Equipment_des']; 
+                                                $id = $row['Field_ID'];
+                                                $acres = $row['acres'];                                                                                      
+                                                $crop = $row['Crop_name'];
+                
+                                                echo '<tr>
+                                                <th scope= "row">'.$name.'</th>
+                                                <td>'.$tractor.'</td>
+                                                <td>'.$task.'</td>
+                                                <td>'.$equipment.'</td>
+                                                <td>'.$id.'</td>
+                                                <td>'.$acres.'</td>
+                                                <td>'.$crop.'</td>
+                                                </tr>';
+                                            }
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                
+                                    '</tbody>
+                                </table>';
+                            break;
+                        }
+                }?>
+                <?php 
+                    if($Dname != null){
+                        $newfield = $_GET['thefield'];
+                        switch($newfield) {
+                            case("200"):
+                                echo 
+                                '<table class = "table" >
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"> Driver name </th>
+                                            <th scope="col"> Tractor </th>               
+                                            <th scope="col"> Task </th>
+                                            <th scope="col"> Equipment </th>
+                                            <th scope="col"> Field ID </th>
+                                            <th scope="col"> Acres </th>
+                                            <th scope="col"> Crop </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>'; 
+                                        $sql="call ChangeD_to_field200('$Dname');";
+                                        $result= mysqli_query($conn,$sql);  
+                                        if($result){
+                                            while ($row = mysqli_fetch_assoc($result)){
+                                                $name = $row['Worker_name'];
+                                                $tractor = $row['Tractor_des'];
+                                                $task = $row['Task_des'];
+                                                $equipment = $row['Equipment_des']; 
+                                                $id = $row['Field_ID'];
+                                                $acres = $row['acres'];                                                                                      
+                                                $crop = $row['Crop_name'];
+                
+                                                echo '<tr>
+                                                <th scope= "row">'.$name.'</th>
+                                                <td>'.$tractor.'</td>
+                                                <td>'.$task.'</td>
+                                                <td>'.$equipment.'</td>
+                                                <td>'.$id.'</td>
+                                                <td>'.$acres.'</td>
+                                                <td>'.$crop.'</td>
+                                                </tr>';
+                                            }
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                
+                                    '</tbody>
+                                </table>';
+                            break;
+                            case("201"):
+                                echo 
+                                '<table class = "table" >
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"> Driver name </th>
+                                            <th scope="col"> Tractor </th>               
+                                            <th scope="col"> Task </th>
+                                            <th scope="col"> Equipment </th>
+                                            <th scope="col"> Field ID </th>
+                                            <th scope="col"> Acres </th>
+                                            <th scope="col"> Crop </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>'; 
+                                        $sql="call ChangeD_to_field201('$Dname');";
+                                        $result= mysqli_query($conn,$sql);  
+                                        if($result){
+                                            while ($row = mysqli_fetch_assoc($result)){
+                                                $name = $row['Worker_name'];
+                                                $tractor = $row['Tractor_des'];
+                                                $task = $row['Task_des'];
+                                                $equipment = $row['Equipment_des']; 
+                                                $id = $row['Field_ID'];
+                                                $acres = $row['acres'];                                                                                      
+                                                $crop = $row['Crop_name'];
+                
+                                                echo '<tr>
+                                                <th scope= "row">'.$name.'</th>
+                                                <td>'.$tractor.'</td>
+                                                <td>'.$task.'</td>
+                                                <td>'.$equipment.'</td>
+                                                <td>'.$id.'</td>
+                                                <td>'.$acres.'</td>
+                                                <td>'.$crop.'</td>
+                                                </tr>';
+                                            }
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                
+                                    '</tbody>
+                                </table>';
+                            break;
+                            case("203"):
+                                echo 
+                                '<table class = "table" >
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"> Driver name </th>
+                                            <th scope="col"> Tractor </th>               
+                                            <th scope="col"> Task </th>
+                                            <th scope="col"> Equipment </th>
+                                            <th scope="col"> Field ID </th>
+                                            <th scope="col"> Acres </th>
+                                            <th scope="col"> Crop </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>'; 
+                                        $sql="call ChangeD_to_field203('$Dname');";
+                                        $result= mysqli_query($conn,$sql);  
+                                        if($result){
+                                            while ($row = mysqli_fetch_assoc($result)){
+                                                $name = $row['Worker_name'];
+                                                $tractor = $row['Tractor_des'];
+                                                $task = $row['Task_des'];
+                                                $equipment = $row['Equipment_des']; 
+                                                $id = $row['Field_ID'];
+                                                $acres = $row['acres'];                                                                                      
+                                                $crop = $row['Crop_name'];
+                
+                                                echo '<tr>
+                                                <th scope= "row">'.$name.'</th>
+                                                <td>'.$tractor.'</td>
+                                                <td>'.$task.'</td>
+                                                <td>'.$equipment.'</td>
+                                                <td>'.$id.'</td>
+                                                <td>'.$acres.'</td>
+                                                <td>'.$crop.'</td>
+                                                </tr>';
+                                            }
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                
+                                    '</tbody>
+                                </table>';
+                            break;
+                        }
+                    }?>
+                <?php 
+                    if($Dname != null){?>
+
+                <?php }?>
         <?php }?>
 
         <?php if($Lname != null){?>
             <?php echo "linemen selected" ?>
+            <section class="linemen-table">
+                <table class = "table">
+                    <thead>
+                        <tr>
+                            <th scope="col"> Linemen Name </th>
+                            <th scope="col"> Task </th>               
+                            <th scope="col"> Field ID </th>
+                            <th scope="col"> Acres </th>
+                            <th scope="col"> Crop </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $sql = "call One_Linemen('$Lname');";
+                            $result = mysqli_query($conn, $sql);
+                            if($result){
+                                while ($row = mysqli_fetch_assoc($result)){
+                                    $name = $row['Worker_name'];
+                                    $task = $row['Task_des'];                                   
+                                    $id = $row['Field_ID'];
+                                    $acres = $row['acres'];
+                                    $crop = $row['Crop_name'];
+
+                                    echo '<tr>
+                                    <th scope= "row">'.$name.'</th>
+                                    <td>'.$task.'</td>
+                                    <td>'.$id.'</td>
+                                    <td>'.$acres.'</td>
+                                    <td>'.$crop.'</td>
+                                    </tr>';
+                                }
+                                $result->close();
+                                $conn->next_result();
+                            }
+                        ?>
+                    </tbody>
+                </table>
+                <form>        
+                    <label>Task Options:</label>
+                    <select class="taskoption" name= "thetask">
+                        <option> none </option>
+                        <option> Move Lines </option>
+                        <option> Main Line </option>
+                        <option> Spray Weeds </option>
+                        <option> Off </option>
+                    </select>
+                    <?php echo "<button name='submitL1' value='$Lname'> Submit  </button>";?>
+                    
+                    <label>Field Options:</label>
+                    <select class="fieldoption" name= "thefield">
+                    <option> none </option>
+                        <option> 200 </option>
+                        <option> 201 </option>
+                        <option> 203 </option>
+                    </select>
+                    <?php echo "<button name='submitL2' value='$Lname'> Submit  </button>";?> 
+                </form>
+            </section>
+            <?php 
+                if($Lname != null){
+                    $newtask = $_GET['thetask'];
+                    switch($newtask) {
+                        case "Move Lines":
+                            echo 
+                            '<table class = "table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Linemen Name </th>
+                                        <th scope="col"> Task </th>               
+                                        <th scope="col"> Field ID </th>
+                                        <th scope="col"> Acres </th>
+                                        <th scope="col"> Crop </th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                                    $sql = "call ChangeL_to_Move_Lines('$Lname');";
+                                    $result = mysqli_query($conn, $sql);
+                                    if($result){
+                                        while ($row = mysqli_fetch_assoc($result)){
+                                            $name = $row['Worker_name'];
+                                            $task = $row['Task_des'];                                   
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];
+                                            $crop = $row['Crop_name'];
+
+                                            echo '<tr>
+                                            <th scope= "row">'.$name.'</th>
+                                            <td>'.$task.'</td>
+                                            <td>'.$id.'</td>
+                                            <td>'.$acres.'</td>
+                                            <td>'.$crop.'</td>
+                                            </tr>';
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                    }
+                                '</tbody>
+                            </table>';
+                        break;
+                        case "Main Line":
+                            echo 
+                            '<table class = "table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Linemen Name </th>
+                                        <th scope="col"> Task </th>               
+                                        <th scope="col"> Field ID </th>
+                                        <th scope="col"> Acres </th>
+                                        <th scope="col"> Crop </th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                                    $sql = "call ChangeL_to_Main_Line('$Lname');";
+                                    $result = mysqli_query($conn, $sql);
+                                    if($result){
+                                        while ($row = mysqli_fetch_assoc($result)){
+                                            $name = $row['Worker_name'];
+                                            $task = $row['Task_des'];                                   
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];
+                                            $crop = $row['Crop_name'];
+
+                                            echo '<tr>
+                                            <th scope= "row">'.$name.'</th>
+                                            <td>'.$task.'</td>
+                                            <td>'.$id.'</td>
+                                            <td>'.$acres.'</td>
+                                            <td>'.$crop.'</td>
+                                            </tr>';
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                    }
+                                '</tbody>
+                            </table>';
+                        break;
+                        case "Spray Weeds":
+                            echo 
+                            '<table class = "table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Linemen Name </th>
+                                        <th scope="col"> Task </th>               
+                                        <th scope="col"> Field ID </th>
+                                        <th scope="col"> Acres </th>
+                                        <th scope="col"> Crop </th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                                    $sql = "call ChangeL_to_Spray_Weeds('$Lname');";
+                                    $result = mysqli_query($conn, $sql);
+                                    if($result){
+                                        while ($row = mysqli_fetch_assoc($result)){
+                                            $name = $row['Worker_name'];
+                                            $task = $row['Task_des'];                                   
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];
+                                            $crop = $row['Crop_name'];
+
+                                            echo '<tr>
+                                            <th scope= "row">'.$name.'</th>
+                                            <td>'.$task.'</td>
+                                            <td>'.$id.'</td>
+                                            <td>'.$acres.'</td>
+                                            <td>'.$crop.'</td>
+                                            </tr>';
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                    }
+                                '</tbody>
+                            </table>';
+                        break;
+                        case "Off":
+                            echo 
+                            '<table class = "table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Linemen Name </th>
+                                        <th scope="col"> Task </th>               
+                                        <th scope="col"> Field ID </th>
+                                        <th scope="col"> Acres </th>
+                                        <th scope="col"> Crop </th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                                    $sql = "call ChangeL_to_Off('$Lname');";
+                                    $result = mysqli_query($conn, $sql);
+                                    if($result){
+                                        while ($row = mysqli_fetch_assoc($result)){
+                                            $name = $row['Worker_name'];
+                                            $task = $row['Task_des'];                                   
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];
+                                            $crop = $row['Crop_name'];
+
+                                            echo '<tr>
+                                            <th scope= "row">'.$name.'</th>
+                                            <td>'.$task.'</td>
+                                            <td>'.$id.'</td>
+                                            <td>'.$acres.'</td>
+                                            <td>'.$crop.'</td>
+                                            </tr>';
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                    }
+                                '</tbody>
+                            </table>';
+                        break;
+                    }
+                }
+            ?>
+            <?php 
+                if($Lname != null){
+                    $newfield = $_GET['thefield'];
+                    switch($newfield) {
+                        case "200":
+                            echo 
+                            '<table class = "table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Linemen Name </th>
+                                        <th scope="col"> Task </th>               
+                                        <th scope="col"> Field ID </th>
+                                        <th scope="col"> Acres </th>
+                                        <th scope="col"> Crop </th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                                    $sql = "call ChangeL_to_field200('$Lname');";
+                                    $result = mysqli_query($conn, $sql);
+                                    if($result){
+                                        while ($row = mysqli_fetch_assoc($result)){
+                                            $name = $row['Worker_name'];
+                                            $task = $row['Task_des'];                                   
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];
+                                            $crop = $row['Crop_name'];
+
+                                            echo '<tr>
+                                            <th scope= "row">'.$name.'</th>
+                                            <td>'.$task.'</td>
+                                            <td>'.$id.'</td>
+                                            <td>'.$acres.'</td>
+                                            <td>'.$crop.'</td>
+                                            </tr>';
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                    }
+                                '</tbody>
+                            </table>';
+                        break;
+                        case "201":
+                            echo 
+                            '<table class = "table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Linemen Name </th>
+                                        <th scope="col"> Task </th>               
+                                        <th scope="col"> Field ID </th>
+                                        <th scope="col"> Acres </th>
+                                        <th scope="col"> Crop </th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                                    $sql = "call ChangeL_to_field201('$Lname');";
+                                    $result = mysqli_query($conn, $sql);
+                                    if($result){
+                                        while ($row = mysqli_fetch_assoc($result)){
+                                            $name = $row['Worker_name'];
+                                            $task = $row['Task_des'];                                   
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];
+                                            $crop = $row['Crop_name'];
+
+                                            echo '<tr>
+                                            <th scope= "row">'.$name.'</th>
+                                            <td>'.$task.'</td>
+                                            <td>'.$id.'</td>
+                                            <td>'.$acres.'</td>
+                                            <td>'.$crop.'</td>
+                                            </tr>';
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                    }
+                                '</tbody>
+                            </table>';
+                        break;
+                        case "203":
+                            echo 
+                            '<table class = "table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Linemen Name </th>
+                                        <th scope="col"> Task </th>               
+                                        <th scope="col"> Field ID </th>
+                                        <th scope="col"> Acres </th>
+                                        <th scope="col"> Crop </th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                                    $sql = "call ChangeL_to_field203('$Lname');";
+                                    $result = mysqli_query($conn, $sql);
+                                    if($result){
+                                        while ($row = mysqli_fetch_assoc($result)){
+                                            $name = $row['Worker_name'];
+                                            $task = $row['Task_des'];                                   
+                                            $id = $row['Field_ID'];
+                                            $acres = $row['acres'];
+                                            $crop = $row['Crop_name'];
+
+                                            echo '<tr>
+                                            <th scope= "row">'.$name.'</th>
+                                            <td>'.$task.'</td>
+                                            <td>'.$id.'</td>
+                                            <td>'.$acres.'</td>
+                                            <td>'.$crop.'</td>
+                                            </tr>';
+                                        }
+                                        $result->close();
+                                        $conn->next_result();
+                                    }
+                                '</tbody>
+                            </table>';
+                        break;
+                    }
+                }
+            ?>
         <?php }?>
 
         <?php if($Iname != null){?>
