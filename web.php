@@ -24,7 +24,6 @@
 
                     $("#mysvg").load("mymap.svg", function(){
                     $("#mysvg svg").css("max-width","100%", "max-height", "100%", "z-index", "1");
-                    
 
                     $("#themap").click(function(evt){
                         switch(evt.target.id){        
